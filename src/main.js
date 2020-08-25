@@ -10,6 +10,10 @@ import {
   start,
   initGlobalState
 } from 'qiankun';
+
+// 组件
+import components from '@/utils/component'
+
 registerMicroApps([{
     name: 'microFapp', // app name registered
     entry: '//localhost:7100/main.js',
@@ -17,6 +21,7 @@ registerMicroApps([{
     props: {
       mainModules,
       getMainStoreModules: () => mainModules,
+      components
     },
     activeRule: '#/microFapp',
     // activeRule: location => location.hash.split('/')[1] === 'microFapp',
@@ -25,6 +30,9 @@ registerMicroApps([{
     name: 'microFrqr',
     entry: '//localhost:7200/main.js',
     container: '#fdevrqr',
+    props: {
+      mainModules
+    },
     activeRule: '#/microFrqr',
     // activeRule: location => location.hash.split('/')[1] === 'microFrqr',
   },
