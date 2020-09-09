@@ -14,6 +14,8 @@ import {
 // 组件
 import components from '@/utils/component'
 
+// import utils from '@/utils/utils'
+
 registerMicroApps([{
     name: 'microFapp', // app name registered
     entry: '//localhost:7100/main.js',
@@ -21,7 +23,8 @@ registerMicroApps([{
     props: {
       mainModules,
       getMainStoreModules: () => mainModules,
-      components
+      components,
+      // utils
     },
     activeRule: '#/microFapp',
     // activeRule: location => location.hash.split('/')[1] === 'microFapp',

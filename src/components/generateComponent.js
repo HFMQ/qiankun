@@ -14,6 +14,7 @@ allFiles = allFiles.filter(fileName => {
   return fileName !== 'generateComponent.js' && fileName !== 'HelloWorld.vue'
 });
 console.log('hf', allFiles);
+let componentsStr = '';
 allFiles.forEach((item, index) => {
   let str = `
     import ${item} from '@/components/${item}';
@@ -21,18 +22,26 @@ allFiles.forEach((item, index) => {
       Vue.component('${item}', ${item});
     };
   `
+  componentsStr += `
+      ${item},
+    `
   if (index === allFiles.length - 1) {
     str += `
-      const components = [${allFiles}];
-      const install = function (Vue) {
-        components.forEach(component => {
-          Vue.component(component.name, component);
-        });
-      }
+    // const components = [${allFiles}];
+    const components = [${componentsStr}];
+    // install Vue.use 注册全局组件
+    const install = function (Vue) {
+      components.forEach(component => {
+        Vue.component(component.name, component);
+      });
+    }
     `
     str += `export default {
-      ${allFiles},
-      install
+      // component install function
+      install,
+      // component ⬇
+      ${componentsStr}
+      // component ⬆
     }`
   }
   fs.appendFileSync('../utils/component.js', str, function (err) {

@@ -9,13 +9,26 @@
       Vue.component('VerifycationCode', VerifycationCode);
     };
   
-      const components = [Alers,VerifycationCode];
-      const install = function (Vue) {
-        components.forEach(component => {
-          Vue.component(component.name, component);
-        });
-      }
+    // const components = [Alers,VerifycationCode];
+    const components = [
+      Alers,
+    
+      VerifycationCode,
+    ];
+    // install Vue.use 注册全局组件
+    const install = function (Vue) {
+      components.forEach(component => {
+        Vue.component(component.name, component);
+      });
+    }
     export default {
-      Alers,VerifycationCode,
-      install
+      // component install function
+      install,
+      // component ⬇
+      
+      Alers,
+    
+      VerifycationCode,
+    
+      // component ⬆
     }

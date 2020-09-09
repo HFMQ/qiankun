@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">base</router-link>
       <router-link to="/About">About</router-link>
-      <router-link to="/microFapp">fdevapp</router-link>
+      <router-link to="/microFapp/About">fdevapp</router-link>
       <router-link to="/microFrqr">fdevrqr</router-link>
     </div>
     <div id="fdevapp"></div>
